@@ -9,84 +9,67 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --green-deep:#2f4a3f; /* main green */
-      --green-ink:#24372f; /* darker green */
-      --cream:#f7f0e2;     /* white/cream */
-      --sun:#f3a71b;       /* yellow */
+      --green-deep:#2f4a3f;
+      --cream:#f7f0e2;
+      --sun:#f3a71b;
       --black:#0d0d0d;
       --white:#ffffff;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--cream);color:#101311;font-family:"Manrope",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    html,body{margin:0;padding:0;background:var(--cream);color:#101311;font-family:"Manrope",system-ui}
     .display{font-family:"DM Serif Display",serif}
     a{color:inherit;text-decoration:none}
     .container{max-width:1180px;margin:0 auto;padding:0 20px}
 
-    /* HEADER */
-    header{position:sticky;top:0;z-index:50;background:var(--green-deep);color:var(--cream);border-bottom:1px solid rgba(255,255,255,.08)}
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:var(--green-deep);color:var(--cream)}
     .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
     .brand{font-weight:800}
-    .nav-links{display:flex;gap:28px;align-items:center}
-    .cta{background:var(--sun);color:#111;padding:10px 16px;border-radius:999px;font-weight:800;box-shadow:0 6px 0 rgba(0,0,0,.2);transition:.15s transform, .15s box-shadow}
-    .cta:hover{transform:translateY(2px);box-shadow:0 4px 0 rgba(0,0,0,.2)}
+    .nav-links{display:flex;gap:24px;align-items:center}
+    .cta{background:var(--sun);color:#111;padding:8px 14px;border-radius:999px;font-weight:700;border:none;cursor:pointer}
 
-    /* PANELS — equal height */
+    /* Sections */
     .panel{min-height:100vh;display:grid;align-items:center}
     .green{background:var(--green-deep);color:var(--cream)}
     .white{background:var(--cream);color:#111}
-
-    /* GRID helpers */
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 
-    /* IMAGE blocks */
-    .photo-card{background:#d4762b;border-radius:8px;height:min(70vh,520px);position:relative;overflow:hidden}
-    .photo-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend:multiply;filter:contrast(.9) saturate(.9)}
+    .photo-card{background:#d4762b;border-radius:8px;height:min(70vh,500px);position:relative;overflow:hidden}
+    .photo-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
-    /* HERO text */
-    .tagline{font-size:clamp(48px,7vw,96px);line-height:.95;margin:0}
+    .tagline{font-size:clamp(48px,7vw,96px);line-height:1;margin:0}
 
-    /* ABOUT — right photo with black extension down */
+    /* About */
     .about-wrap{position:relative}
-    .about-photo{position:relative}
-    .contact-extension{position:absolute;left:10%;right:10%;bottom:-64px;background:#0f1110;color:#f7f3e9;padding:18px 22px;border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,.35)}
-    .contact-row{display:flex;gap:10px;margin:4px 0;font-size:14px}
+    .contact-extension{position:absolute;left:10%;right:10%;bottom:-64px;background:#0f1110;color:#f7f3e9;padding:16px 20px;border-radius:10px}
+    .contact-row{margin:4px 0;font-size:14px}
 
-    /* EDU + SKILLS */
-    .section-title{font-family:"DM Serif Display",serif;color:var(--sun);font-size:clamp(28px,3.5vw,40px);margin:0 0 16px}
+    /* Education */
+    .section-title{font-family:"DM Serif Display",serif;color:var(--sun);font-size:28px;margin:0 0 12px}
     .timeline{border-left:3px solid rgba(255,255,255,.25);padding-left:18px}
     .timeline-item{margin:12px 0;position:relative}
-    .timeline-item::before{content:"";position:absolute;left:-27px;top:4px;width:12px;height:12px;background:var(--sun);border-radius:2px;transform:rotate(45deg)}
-    .skills-list span{display:inline-block;border:1px solid rgba(255,255,255,.4);color:#fff;padding:8px 10px;border-radius:8px;font-weight:800;margin:6px 6px 0 0}
+    .timeline-item::before{content:"";position:absolute;left:-27px;top:4px;width:12px;height:12px;background:var(--sun);transform:rotate(45deg)}
+    .skills-list span{display:inline-block;border:1px solid rgba(255,255,255,.4);color:#fff;padding:6px 10px;border-radius:6px;font-weight:600;margin:4px 4px 0 0}
 
-    /* EXPERIENCE bridge — yellow box straddling green/white equally */
-    .experience-bridge{position:relative}
-    .bridge-box{position:absolute;left:0;right:0;bottom:-20vh;height:40vh;background:var(--sun);display:flex;align-items:center}
-    .bridge-inner{max-width:1180px;margin:0 auto;padding:0 20px;display:flex;align-items:center}
-    .bridge-title{font-family:"DM Serif Display",serif;font-size:32px;margin:0 24px 0 0}
+    /* Small yellow overlay box */
+    .experience-box{position:absolute;left:40px;top:50%;transform:translateY(-50%);background:var(--sun);color:#111;padding:16px 20px;border-radius:8px;max-width:360px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
 
-    /* LAST PANEL */
-    .col{display:flex;flex-direction:column;gap:10px}
-
-    /* RESUME MODAL */
+    /* Resume Modal */
     .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:24px;z-index:100}
     .modal.open{display:flex}
-    .modal-card{background:#111;color:#eee;max-width:1000px;width:100%;height:85vh;border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
-    .modal-head{padding:12px 16px;background:#181818;display:flex;align-items:center;justify-content:space-between}
-    .modal-body{flex:1;}
-    .modal-body iframe{width:100%;height:100%;border:0;background:#fff}
-    .close{cursor:pointer;background:#2a2a2a;border:0;color:#fff;padding:8px 12px;border-radius:8px;font-weight:700}
+    .modal-card{background:#111;color:#eee;max-width:900px;width:100%;height:85vh;border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+    .modal-head{padding:12px 16px;background:#181818;display:flex;justify-content:space-between;align-items:center}
+    .modal-body{flex:1}
+    .modal-body iframe{width:100%;height:100%;border:0}
+    .close{background:#2a2a2a;color:#fff;border:0;padding:6px 10px;border-radius:6px;cursor:pointer}
 
-    /* Responsive */
-    @media (max-width: 980px){
+    @media(max-width:980px){
       .grid{grid-template-columns:1fr;gap:24px}
-      .photo-card{height:380px}
-      .contact-extension{left:0;right:0}
-      .bridge-box{height:48vh;bottom:-24vh}
+      .experience-box{position:relative;left:0;top:0;transform:none;margin:24px 0}
     }
   </style>
 </head>
 <body>
-  <!-- Header / Nav with Resume embed trigger -->
   <header>
     <div class="container nav">
       <div class="brand">Sivanvita Naidu G N</div>
@@ -94,18 +77,17 @@
         <a href="#hero">Home</a>
         <a href="#about">About</a>
         <a href="#edu">Education</a>
-        <a href="#skills">Skills</a>
         <a href="#achievements">Achievements</a>
         <button class="cta" id="openResume">Resume</button>
       </nav>
     </div>
   </header>
 
-  <!-- PANEL 1: Green full screen — photo left, tagline right -->
+  <!-- Hero -->
   <section id="hero" class="panel green">
     <div class="container grid">
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" alt="Sivanvita portrait" />
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" alt="portrait" />
       </div>
       <div style="display:flex;align-items:center">
         <h1 class="display tagline">Creative.<br>Innovative.<br>Exploring.</h1>
@@ -113,15 +95,15 @@
     </div>
   </section>
 
-  <!-- PANEL 2: White full screen — photo right with black extension down; left short about (≈20 words) -->
+  <!-- About -->
   <section id="about" class="panel white">
     <div class="container grid about-wrap">
       <div style="display:flex;align-items:center">
-        <p style="font-size:22px;max-width:540px;margin:0">Software engineer crafting clean systems and user experiences; curious, practical, and always learning to build useful, reliable products, everyday solutions.</p>
+        <p style="font-size:22px;max-width:540px;margin:0">Software engineer crafting clean systems and user experiences; curious, practical, and always learning to build useful, reliable products.</p>
       </div>
-      <div class="about-photo">
+      <div>
         <div class="photo-card">
-          <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1200&auto=format&fit=crop" alt="Sivanvita portrait" />
+          <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1200&auto=format&fit=crop" alt="portrait" />
         </div>
         <div class="contact-extension">
           <div style="font-weight:800;margin-bottom:6px">Contact</div>
@@ -134,68 +116,58 @@
     </div>
   </section>
 
-  <!-- PANEL 3: Green full screen — left education; yellow bridge into next white; right technical skills in white -->
-  <section id="edu" class="panel green" style="position:relative;overflow:visible">
+  <!-- Education & Skills -->
+  <section id="edu" class="panel green" style="position:relative">
     <div class="container grid">
       <div>
         <h3 class="section-title">Education</h3>
         <div class="timeline">
           <div class="timeline-item">
-            <div style="font-weight:800">2019 – 2023 · SASTRA Deemed University, Thanjavur</div>
-            <div> B.Tech in Computer Science Engineering — CGPA 7.86/10</div>
+            <div style="font-weight:700">2019 – 2023 · SASTRA Deemed University</div>
+            <div>B.Tech CSE — CGPA 7.86/10</div>
           </div>
           <div class="timeline-item">
-            <div style="font-weight:800">2017 – 2019 · Sri Chaitanya Jr. College</div>
-            <div> MPC — Board of Intermediate Education</div>
+            <div style="font-weight:700">2017 – 2019 · Sri Chaitanya Jr. College</div>
+            <div>MPC — Intermediate Board</div>
           </div>
         </div>
       </div>
-      <div id="skills">
+      <div>
         <h3 class="section-title">Technical Skills</h3>
         <div class="skills-list">
           <span>Python</span><span>Java</span><span>C/C++</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Git</span><span>MySQL</span><span>PostgreSQL</span><span>RDBMS</span><span>DSA</span><span>SDLC</span><span>Agile</span>
         </div>
       </div>
     </div>
-    <!-- Yellow bridge box -->
-    <div class="experience-bridge" aria-hidden="true">
-      <div class="bridge-box">
-        <div class="bridge-inner">
-          <h4 class="bridge-title">Experience</h4>
-          <div>
-            <div style="font-weight:800">NthPhase Software Solutions — Software Engineer</div>
-            <div>ERP across HR/Marketing/Fleet on Apache OFBiz; accelerated Fleet delivery; process streamlining.</div>
-            <div style="height:8px"></div>
-            <div style="font-weight:800">FORD GTBC — Junior Software Engineer / Intern</div>
-            <div>APIs with Java + PostgreSQL; legacy decoupling; authN/authZ; multi‑region sanity testing.</div>
-          </div>
-        </div>
-      </div>
+    <div class="experience-box">
+      <div style="font-weight:700;margin-bottom:6px">Experience</div>
+      <div><strong>NthPhase Software Solutions</strong> — ERP across HR/Marketing/Fleet; streamlined processes.</div>
+      <div style="margin-top:8px"><strong>FORD GTBC</strong> — APIs with Java & PostgreSQL; legacy decoupling; auth & testing.</div>
     </div>
   </section>
 
-  <!-- PANEL 4: White full screen — Achievements left; Hobbies & Languages right -->
-  <section id="achievements" class="panel white" style="padding-top:22vh">
+  <!-- Achievements & Hobbies -->
+  <section id="achievements" class="panel white">
     <div class="container grid">
-      <div class="col">
-        <h3 class="display" style="margin:0 0 6px">Achievements & Certifications</h3>
-        <ul style="margin:0 0 12px 18px">
+      <div>
+        <h3 class="display">Achievements & Certifications</h3>
+        <ul>
           <li>AWS Technical Essentials (Amazon)</li>
           <li>HackerRank MySQL — 5⭐ Gold</li>
           <li>Cardiovascular Disease Prediction project — 99% accuracy</li>
         </ul>
       </div>
-      <div class="col">
-        <h3 class="display" style="margin:0 0 6px">Hobbies & Languages</h3>
-        <div><strong>Hobbies:</strong> NGO volunteer, dog fosterer</div>
-        <div><strong>Languages:</strong> English, Telugu, Hindi</div>
+      <div>
+        <h3 class="display">Hobbies & Languages</h3>
+        <p><strong>Hobbies:</strong> NGO volunteer, dog fosterer</p>
+        <p><strong>Languages:</strong> English, Telugu, Hindi</p>
       </div>
     </div>
   </section>
 
   <!-- Resume Modal -->
-  <div class="modal" id="resumeModal" aria-hidden="true" role="dialog">
-    <div class="modal-card" role="document">
+  <div class="modal" id="resumeModal">
+    <div class="modal-card">
       <div class="modal-head">
         <div style="font-weight:800">Resume — Sivanvita Naidu G N</div>
         <div>
@@ -204,14 +176,12 @@
         </div>
       </div>
       <div class="modal-body">
-        <!-- IMPORTANT: when you deploy, include your PDF in the same folder and name it 'resume.pdf' -->
-        <iframe src="resume.pdf" title="Sivanvita Naidu G N - Resume"></iframe>
+        <iframe src="resume.pdf" title="Resume"></iframe>
       </div>
     </div>
   </div>
 
   <script>
-    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{
         const id=a.getAttribute('href').slice(1);
@@ -219,14 +189,10 @@
         if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'})}
       })
     })
-
-    // Resume modal logic
     const modal=document.getElementById('resumeModal');
-    const open=document.getElementById('openResume');
-    const close=document.getElementById('closeResume');
-    open.addEventListener('click',()=>modal.classList.add('open'));
-    close.addEventListener('click',()=>modal.classList.remove('open'));
-    modal.addEventListener('click',e=>{ if(e.target===modal) modal.classList.remove('open') })
+    document.getElementById('openResume').addEventListener('click',()=>modal.classList.add('open'));
+    document.getElementById('closeResume').addEventListener('click',()=>modal.classList.remove('open'));
+    modal.addEventListener('click',e=>{if(e.target===modal) modal.classList.remove('open')});
   </script>
 </body>
 </html>

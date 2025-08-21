@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sivanvita Naidu G N — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Serif display similar to the reference -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Color palette approximating the reference */
+      --green-deep:#2f4a3f; /* page background top */
+      --green-ink:#24372f; /* dark section */
+      --cream:#f1e7d6; /* page background light */
+      --sun:#f3a71b;   /* accent orange/yellow */
+      --tangerine:#e28a1f; /* buttons */
+      --black:#0d0d0d;
+      --white:#ffffff;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--cream);color:#0f1110;font-family:"Manrope",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;}
+    .display{font-family:"DM Serif Display", serif;letter-spacing:0.5px}
+
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1180px;margin:0 auto;padding:0 20px}
+
+    /* --- Header --- */
+    header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,var(--green-deep),var(--green-deep));color:var(--cream);border-bottom:1px solid rgba(255,255,255,0.08)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{font-weight:800;letter-spacing:0.6px}
+    .nav-links{display:flex;gap:28px;align-items:center}
+    .cta{background:var(--sun);color:#111;padding:10px 16px;border-radius:999px;font-weight:700;box-shadow:0 6px 0 rgba(0,0,0,.2);transform:translateY(0);transition:transform .15s ease, box-shadow .15s ease}
+    .cta:hover{transform:translateY(2px);box-shadow:0 4px 0 rgba(0,0,0,.2)}
+
+    /* --- Hero (banner) --- */
+    .hero-wrap{background:var(--green-deep);color:var(--cream);position:relative;overflow:hidden}
+    .hero{display:grid;grid-template-columns:1.2fr 0.8fr;gap:20px;align-items:end;padding:72px 0 36px}
+    .big-title{font-size:clamp(64px,8vw,132px);line-height:0.9;margin:0;position:relative;z-index:2}
+    .big-outline{position:absolute;right:0;left:0;top:110px;pointer-events:none;opacity:0.9}
+    .big-outline .stroke{font-size:clamp(64px,8vw,128px);line-height:0.9;margin:0;text-align:right;-webkit-text-stroke:1px rgba(243,231,214,0.45);color:transparent}
+
+    .hero-card{background:#d4762b; /* photo block approximating */
+      height:320px;border-radius:6px;position:relative;overflow:hidden}
+    .hero-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend:multiply;filter:contrast(0.85) saturate(0.85)}
+
+    .socials{margin-top:6px;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+    .socials a{opacity:0.92}
+
+    .scroll-indicator{position:absolute;left:50%;transform:translateX(-50%);bottom:-28px;background:var(--sun);width:86px;height:86px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#111;font-weight:800;box-shadow:0 10px 0 rgba(0,0,0,.25)}
+
+    /* --- About me block (cream) --- */
+    .about-section{padding:80px 0 0;background:var(--cream);position:relative}
+    .about-grid{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center}
+    .hello{font-size:clamp(36px,4.5vw,64px);line-height:1.05;margin:0;color:#151717}
+    .hello .line{display:block}
+    .about-text{max-width:560px;opacity:0.9}
+
+    .avatar-card{position:relative}
+    .avatar-frame{background:var(--green-deep);padding:24px;border-radius:4px}
+    .avatar{width:100%;aspect-ratio:1;border-radius:8px;object-fit:cover;display:block;background:#e9e0cf}
+    .pill{position:absolute;left:-14px;top:16px;background:var(--sun);color:#111;padding:10px 14px;border-radius:999px;font-weight:700}
+    .pill.secondary{right:-14px;left:auto;bottom:10px;top:auto}
+
+    .contact-card{position:absolute;right:-12px;bottom:-22px;background:#0f1110;color:#f7f3e9;padding:18px 22px;border-radius:8px;box-shadow:0 12px 24px rgba(0,0,0,.35)}
+    .contact-card h4{margin:0 0 8px;font-family:"DM Serif Display",serif;font-weight:400}
+    .contact-item{display:flex;gap:8px;align-items:center;font-size:14px;opacity:0.95}
+
+    /* --- Mid dark strip --- */
+    .strip{margin-top:64px;background:var(--green-ink);color:var(--cream);padding:56px 0;position:relative}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+
+    /* --- Section headings --- */
+    .section-title{font-family:"DM Serif Display",serif;color:var(--sun);font-size:clamp(28px,3.5vw,40px);margin:0 0 22px;}
+
+    /* --- Education timeline --- */
+    .timeline{border-left:3px solid rgba(255,255,255,.2);padding-left:18px}
+    .timeline-item{margin:18px 0;position:relative}
+    .timeline-item::before{content:"";position:absolute;left:-27px;top:4px;width:12px;height:12px;background:var(--sun);border-radius:2px;transform:rotate(45deg)}
+    .edu-title{font-weight:800}
+    .edu-note{opacity:0.9}
+
+    /* --- Experience --- */
+    .xp-card{background:#f0a32e;padding:24px;border-radius:8px;box-shadow:0 10px 0 rgba(0,0,0,.22)}
+    .xp-chip{display:inline-block;padding:8px 12px;border-radius:999px;background:rgba(0,0,0,.12);margin:6px 8px 0 0;font-weight:700;font-size:13px}
+
+    /* --- Skills --- */
+    .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+    .skill-badge{display:inline-block;background:#f7f3e9;border:1px solid rgba(0,0,0,.08);padding:8px 10px;border-radius:8px;font-weight:800;margin:6px 6px 0 0}
+    .pill-dark{display:inline-block;background:#101312;color:#f4efe3;padding:8px 12px;border-radius:999px;margin:6px 8px 0 0}
+
+    /* --- Footer --- */
+    footer{background:var(--green-ink);color:var(--cream);padding:48px 0;margin-top:56px}
+
+    /* --- Utilities --- */
+    .muted{opacity:0.78}
+    .lead{font-size:18px;line-height:1.65}
+
+    /* --- Responsive tweaks --- */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr;gap:40px;align-items:center}
+      .about-grid{grid-template-columns:1fr}
+      .contact-card{position:relative;right:auto;bottom:auto;margin-top:12px}
+      .strip .grid-2{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav">
+      <div class="brand">Sivanvita Naidu G N</div>
+      <nav class="nav-links">
+        <a href="#about">About me</a>
+        <a href="#work">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact" class="cta">Get in touch!</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-wrap">
+    <div class="container hero">
+      <div>
+        <h1 class="display big-title">PORTFOLIO</h1>
+        <div class="big-outline" aria-hidden="true">
+          <h2 class="display stroke">PORTFOLIO</h2>
+          <h2 class="display stroke">PORTFOLIO</h2>
+        </div>
+        <div class="socials">
+          <a href="https://linkedin.com/in/sivanvitanaidugn01062002" target="_blank" rel="noopener">LI: /sivanvitanaidugn01062002</a>
+          <a href="mailto:sivanvitanaidugn@gmail.com">Mail: sivanvitanaidugn@gmail.com</a>
+          <a href="tel:+919849472232">Mob: +91 9849472232</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="hero-card">
+          <!-- Replace with your photo if you like -->
+          <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1200&auto=format&fit=crop" alt="Portrait placeholder"/>
+        </div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-indicator">Scroll<br>down</a>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about-section">
+    <div class="container about-grid">
+      <div>
+        <h2 class="display hello"><span class="line">Hello,</span><span class="line">I’m Sivanvita!</span></h2>
+        <p class="lead about-text">I’m a Software Engineer who enjoys building scalable, reliable systems and clean user experiences. I approach problems pragmatically and love simplifying complex processes. Currently working at NthPhase Software Solutions, and always curious about data, APIs, and product thinking.</p>
+        <div style="margin-top:16px">
+          <a class="cta" href="https://linkedin.com/in/sivanvitanaidugn01062002" target="_blank" rel="noopener">linkedin.com/in/sivanvitanaidugn01062002</a>
+        </div>
+      </div>
+
+      <div class="avatar-card">
+        <div class="avatar-frame">
+          <img class="avatar" alt="Sivanvita placeholder" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop"/>
+        </div>
+        <div class="pill">1st June 2002</div>
+        <div class="pill secondary">Software Engineer</div>
+        <div class="contact-card" id="contact">
+          <h4 class="display">Contact</h4>
+          <div class="contact-item">📍 India</div>
+          <div class="contact-item">✉️ sivanvitanaidugn@gmail.com</div>
+          <div class="contact-item">📞 +91 98494 72232</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dark strip with Education + Skills -->
+    <div class="strip">
+      <div class="container grid-2">
+        <div>
+          <h3 class="section-title">Education</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="edu-title">2019 – 2023 · SASTRA Deemed University, Thanjavur</div>
+              <div class="edu-note muted">B.Tech in Computer Science Engineering · CGPA 7.86 / 10</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="section-title">Technical skills</h3>
+          <div class="skills-grid">
+            <div>
+              <div class="muted" style="margin-bottom:6px;font-weight:800">Software skills</div>
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">C/C++</span>
+              <span class="skill-badge">Java</span>
+              <span class="skill-badge">HTML</span>
+              <span class="skill-badge">CSS</span>
+              <span class="skill-badge">JavaScript</span>
+              <span class="skill-badge">Git</span>
+              <span class="skill-badge">DSA</span>
+              <span class="skill-badge">SDLC</span>
+            </div>
+            <div>
+              <div class="muted" style="margin-bottom:6px;font-weight:800">Databases & Tools</div>
+              <span class="skill-badge">MySQL</span>
+              <span class="skill-badge">PostgreSQL (basic)</span>
+              <span class="skill-badge">RDBMS</span>
+              <span class="skill-badge">Agile</span>
+              <span class="skill-badge">Angular (beginner)</span>
+              <div style="margin-top:10px"></div>
+              <span class="pill-dark">UI/UX design</span>
+              <span class="pill-dark">API design</span>
+              <span class="pill-dark">User Research</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience & Projects (light) -->
+  <section id="work" class="container" style="padding:48px 0 0">
+    <div class="grid-2">
+      <div>
+        <h3 class="display" style="color:#101312;margin:0 0 18px">Experience</h3>
+        <div class="xp-card">
+          <div style="font-weight:800">NthPhase Software Solutions · Software Engineer</div>
+          <div class="muted">Oct 2023 – Present</div>
+          <ul>
+            <li>Architected a scalable ERP integrating HR, Marketing & Fleet modules on Apache OFBiz for 50+ users.</li>
+            <li>Delivered Fleet module in 14 days vs 25-day target; streamlined processes for ~30% cost savings.</li>
+            <li>Leading a cross-vertical functional study (HR/Marketing/Manufacturing) analyzing 100+ use cases.</li>
+          </ul>
+          <span class="xp-chip">#ERP</span><span class="xp-chip">#Apache OFBiz</span><span class="xp-chip">#APIs</span>
+        </div>
+        <div style="height:16px"></div>
+        <div class="xp-card" style="background:#f4b246">
+          <div style="font-weight:800">FORD GTBC · Junior Software Engineer (Project MARS)</div>
+          <div class="muted">Jul 2023 – Sept 2023</div>
+          <ul>
+            <li>Decoupled legacy front-end and back-end; built backend APIs with Java + PostgreSQL for a unified eCommerce codebase.</li>
+          </ul>
+          <div style="margin-top:6px;font-weight:800">FORD GTBC · Software Intern (PDO Team)</div>
+          <div class="muted">Jan 2023 – Jul 2023</div>
+          <ul>
+            <li>Developed an API with authentication & authorization; conducted sanity testing across six regions.</li>
+          </ul>
+          <span class="xp-chip">#Java</span><span class="xp-chip">#PostgreSQL</span><span class="xp-chip">#Testing</span>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="display" style="color:#101312;margin:0 0 18px">Projects & Achievements</h3>
+        <div class="xp-card" style="background:#ffe4b8">
+          <div style="font-weight:800">Cardiovascular Disease Prediction (ML)</div>
+          <div class="muted">Data preparation · KNN + Logistic Regression (Ensemble)</div>
+          <ul>
+            <li>Curated & normalized 2.1k+ entries across 3 datasets; trained staged classifiers and an ensemble.</li>
+            <li>Achieved 99% accuracy for binary classification (0/1).</li>
+          </ul>
+          <span class="xp-chip">#Python</span><span class="xp-chip">#ML</span><span class="xp-chip">#DataCleaning</span>
+        </div>
+        <div style="height:16px"></div>
+        <div class="xp-card" style="background:#ffe2a6">
+          <div style="font-weight:800">Certifications & Wins</div>
+          <ul>
+            <li>AWS Technical Essentials (Amazon)</li>
+            <li>HackerRank MySQL — 5⭐ Gold</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="grid-2" style="align-items:center">
+        <div>
+          <h3 class="display" style="margin:0">Let’s build something great</h3>
+          <div class="muted">Available for interesting roles & collaborations.</div>
+        </div>
+        <div style="text-align:right">
+          <a class="cta" href="mailto:sivanvitanaidugn@gmail.com">Get in touch!</a>
+        </div>
+      </div>
+      <div style="margin-top:24px;font-size:14px" class="muted">© <span id="year"></span> Sivanvita Naidu G N · Built with love</div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.getAttribute('href').slice(1);
+        const el=document.getElementById(id);
+        if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'})}
+      })
+    })
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
